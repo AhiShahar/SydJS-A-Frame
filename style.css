@@ -1,0 +1,9 @@
+.score {
+  position: absolute;
+  bottom: 8%;
+  left: 2%;
+  background: rgba(62, 63, 70, 0.43);
+  color: black;
+  z-index: 100;
+  padding: 1px 18px;
+}
