@@ -40,10 +40,10 @@ AFRAME.registerComponent('rain-of-entities', {
     // Recycling is important, kids.
     setInterval(function () {
       if (sphere.body.position.y > 0) return;
-      if (sphere.body.position.x > 0) {
+      if (sphere.body.position.x > 35) {
         teamA += 1;
         scoreA.innerHTML = teamA;
-      } else {
+      } else if (sphere.body.position.x > -35) {
         teamB += 1;
         scoreB.innerHTML = teamB;
       }
