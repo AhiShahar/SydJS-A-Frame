@@ -7,6 +7,10 @@
  *
  * Requires: physics
  */
+ let teamA = 0;
+ let teamB = 0;
+ const scoreA = document.querySelector("#team-A");
+ const scoreB = document.querySelector("#team-B");
 AFRAME.registerComponent('rain-of-entities', {
   schema: {
     tagName:    { default: 'a-sphere' },
@@ -36,6 +40,13 @@ AFRAME.registerComponent('rain-of-entities', {
     // Recycling is important, kids.
     setInterval(function () {
       if (sphere.body.position.y > 0) return;
+      if (sphere.body.position.x > 0) {
+        teamA += 1;
+        scoreA.innerText(teamA);
+      } else {
+        teamB += 1;
+        scoreB.innerText(teamB);
+      }
       sphere.body.position.copy(this.randomPosition());
       sphere.body.velocity.set(0,0,0);
     }.bind(this), this.data.lifetime);
