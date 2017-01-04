@@ -31,12 +31,11 @@
 
       <!-- USER CAMERA -->
       <a-entity camera
+                id="avatar" mixin="avatar-head"
+                firebase-broadcast="components: mixin, position, rotation"
                 universal-controls="movementEnabled: true"
                 kinematic-body
-                id="avatar" mixin="avatar-head"
-                look-controls wasd-controls
-                firebase-broadcast="components: mixin, position, rotation"
-                position="0 1.8 5">
+                position="0 1 0">
         <a-entity cursor="maxDistance: 0.1"
                   position="0 0 -1"
                   geometry="primitive: circle; radius: 0.01; segments: 4;"
