@@ -15,11 +15,8 @@
     <a-scene physics rain-of-entities force-float="selector: [force-pushable]">
 
       <a-assets>
-        <a-asset-item id="ball" src="ball.dae"></a-asset-item>
+        <img src="ball.jpg" id="ball">
       </a-assets>
-
-      <a-entity collada-model="#ball" position="-6 3.80 -17" dynamic-body>
-      </a-entity>
 
       <!-- USER CAMERA -->
       <a-entity camera
@@ -33,7 +30,6 @@
       </a-entity>
 
       <a-box class="floor" width="70" depth="30" opacity="0.55" static-body position="0 0 0" color="#409940"></a-box>
-
       <!-- Team 1 Goal Posts -->
       <a-cylinder color="white" position="35 1 -2.5" height="6" radius="0.2" static-body></a-cylinder>
       <a-cylinder color="white" position="35 1 2.5" height="6" radius="0.2" static-body></a-cylinder>
