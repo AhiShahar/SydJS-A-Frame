@@ -17,26 +17,17 @@
       <p>team A - <span class="team-a"></span></p>
       <p>team B - <span class="team-b"></span></p>
     </div>
-    <a-scene physics rain-of-entities force-float="selector: [force-pushable]" firebase="apiKey: AIzaSyCZ3-NR0dDNaVzDgpybULwmJokkPTSmOsQ;
-                       authDomain: aframe-firebase-component.firebaseapp.com;
-                       databaseURL: https://aframe-firebase-component.firebaseio.com;
-                       storageBucket: aframe-firebase-component.appspot.com">
+    <a-scene physics rain-of-entities force-float="selector: [force-pushable]">
 
       <a-assets>
         <img src="ball.jpg" id="ball">
-        <a-mixin id="avatar-head"
-              geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
-              material="color: #222"></a-mixin>
       </a-assets>
 
       <!-- USER CAMERA -->
       <a-entity camera
                 universal-controls="movementEnabled: true"
                 kinematic-body
-                id="avatar" mixin="avatar-head"
-                look-controls wasd-controls
-                firebase-broadcast="components: mixin, position, rotation"
-                position="0 1.8 5">
+                position="0 1 0">
         <a-entity cursor="maxDistance: 0.1"
                   position="0 0 -1"
                   geometry="primitive: circle; radius: 0.01; segments: 4;"
