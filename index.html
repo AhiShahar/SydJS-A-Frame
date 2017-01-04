@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <!--  Include the A-Frame library  -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-    <script src="main.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
 
     <!-- Include Physics -->
@@ -15,8 +14,8 @@
   <body>
 
     <div class="score">
-      <p class="team-a">team A</p>
-      <p class="team-b">team B</p>
+      <p>team A - <span class="team-a"></span></p>
+      <p>team B - <span class="team-b"></span></p>
     </div>
     <a-scene physics rain-of-entities force-float="selector: [force-pushable]">
 
@@ -62,5 +61,6 @@
 
 
     </a-scene>
+    <script src="main.js"></script>
   </body>
 </html>

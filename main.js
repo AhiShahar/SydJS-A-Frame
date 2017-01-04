@@ -9,15 +9,15 @@
  */
  let teamA = 0;
  let teamB = 0;
- const scoreA = document.querySelector("#team-A");
- const scoreB = document.querySelector("#team-B");
+ const scoreA = document.querySelector(".team-a");
+ const scoreB = document.querySelector(".team-b");
 AFRAME.registerComponent('rain-of-entities', {
   schema: {
     tagName:    { default: 'a-sphere' },
     components: { default: ['dynamic-body', 'force-pushable', 'src|#ball', 'radius|0.2'] },
     maxCount:   { default: 1, min: 0 },
     interval:   { default: 50, min: 0 },
-    lifetime:   { default: 10000, min: 0 }
+    lifetime:   { default: 1000, min: 0 }
   },
   init: function () {
     this.spherees = [];
@@ -42,10 +42,10 @@ AFRAME.registerComponent('rain-of-entities', {
       if (sphere.body.position.y > 0) return;
       if (sphere.body.position.x > 0) {
         teamA += 1;
-        scoreA.innerText(teamA);
+        scoreA.innerHTML = teamA;
       } else {
         teamB += 1;
-        scoreB.innerText(teamB);
+        scoreB.innerHTML = teamB;
       }
       sphere.body.position.copy(this.randomPosition());
       sphere.body.velocity.set(0,0,0);
