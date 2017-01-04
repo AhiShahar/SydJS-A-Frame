@@ -12,32 +12,32 @@ AFRAME.registerComponent('rain-of-entities', {
     tagName:    { default: 'a-sphere' },
     components: { default: ['dynamic-body', 'force-pushable', 'color|#FF0055', 'radius|0.2'] },
     maxCount:   { default: 1, min: 0 },
-    interval:   { default: 1000, min: 0 },
+    interval:   { default: 50, min: 0 },
     lifetime:   { default: 10000, min: 0 }
   },
   init: function () {
-    this.boxes = [];
+    this.spherees = [];
     this.timeout = setInterval(this.spawn.bind(this), this.data.interval);
   },
   spawn: function () {
-    if (this.boxes.length >= this.data.maxCount) {
+    if (this.spherees.length >= this.data.maxCount) {
       clearTimeout(this.timeout);
       return;
     }
     var data = this.data,
-        box = document.createElement(data.tagName);
-    this.boxes.push(box);
-    this.el.appendChild(box);
-    box.setAttribute('position', this.randomPosition());
+        sphere = document.createElement(data.tagName);
+    this.spherees.push(sphere);
+    this.el.appendChild(sphere);
+    sphere.setAttribute('position', this.randomPosition());
     data.components.forEach(function (s) {
       var parts = s.split('|');
-      box.setAttribute(parts[0], parts[1] || '');
+      sphere.setAttribute(parts[0], parts[1] || '');
     });
     // Recycling is important, kids.
     setInterval(function () {
-      if (box.body.position.y > 0) return;
-      box.body.position.copy(this.randomPosition());
-      box.body.velocity.set(0,0,0);
+      if (sphere.body.position.y > 0) return;
+      sphere.body.position.copy(this.randomPosition());
+      sphere.body.velocity.set(0,0,0);
     }.bind(this), this.data.lifetime);
   },
   randomPosition: function () {

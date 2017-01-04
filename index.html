@@ -14,12 +14,19 @@
   <body>
     <a-scene physics rain-of-entities force-float="selector: [force-pushable]">
 
+      <a-assets>
+        <a-asset-item id="ball" src="ball.dae"></a-asset-item>
+      </a-assets>
+
+      <a-entity collada-model="#ball" position="-6 3.80 -17" dynamic-body>
+      </a-entity>
+
       <!-- USER CAMERA -->
       <a-entity camera
                 universal-controls="movementEnabled: true"
                 kinematic-body
                 position="0 1 0">
-        <a-entity cursor="maxDistance: 75"
+        <a-entity cursor="maxDistance: 0.1"
                   position="0 0 -1"
                   geometry="primitive: circle; radius: 0.01; segments: 4;"
                   material="color: black; shader: flat"></a-entity>
