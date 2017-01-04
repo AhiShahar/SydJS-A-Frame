@@ -43,7 +43,7 @@ AFRAME.registerComponent('rain-of-entities', {
       if (sphere.body.position.x > 35) {
         teamA += 1;
         scoreA.innerHTML = teamA;
-      } else if (sphere.body.position.x > -35) {
+      } else if (sphere.body.position.x < -35) {
         teamB += 1;
         scoreB.innerHTML = teamB;
       }
