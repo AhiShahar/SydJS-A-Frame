@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>A-Frame</h1>
+					<p>and how to make it awesome</p>
+				</section>
+
+				<section>
+					<section>
+					<h2>About us</h2>
+					<p>Two punks from GA trying not to embarrass ourselves ...or Jack</p>
+					<p>Ned:
+						<a href="https://au.linkedin.com/in/ned-pike-11a075127">
+							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+						</a>
+						<a href="https://github.com/rocking42">
+							<i class="fa fa-github" aria-hidden="true"></i>
+						</a>
+					</p>
+					<p>Ahi:
+						<a href="https://au.linkedin.com/in/ahi-shahar-58a472b0">
+							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+						</a>
+						<a href="https://github.com/AhiShahar">
+							<i class="fa fa-github" aria-hidden="true"></i>
+						</a>
+					</p>
+					</section>
+
+					<section data-background="Jack.gif">
+					</section>
+				</section>
+
+				<section>
+					<h2>What is A-Frame?</h2>
+					<p>A-Frame is a web framework created by Mozilla that is built on top of WebGL that greatly eases the learning curve of making VR in the browser </p>
+				</section>
+
+				<section>
+					<h2>How?</h2>
+					<p>A-Frame allows creation of scenes with HTML but also gives access to all of THREE.js and any existing web APIs</p>
+				</section>
+
+				<section>
+					<h2>HTML Boilerplate</h2>
+					<p>Getting starting with A-Frame couldn't be simpler simply reference A-Frame and call a-scene in the body and A-Frame sets up the scene from there</p>
+				</section>
+
+				<section>
+					<h3>Entity component system (ECS)</h3>
+					<p>Every object in A-Frame is a component. An entity by itself is an empty object, however where a-frame shine is it's ability to plug components into these entities</p>
+					<pre><code data-trim>
+						<a-entity></a-entity>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Primitives</h2>
+					<p>Primitives are named enities that come with preset components. A-Frame comes with a wide range of preset primitives to help build your scene</p>
+					<pre><code data-trim>
+						<a-box width="70" depth="30" color="#409940"></a-box>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Camera</h2>
+					<p>A-Frame come's standard with a default camera, however it's helpful to override the default camera as this gives the ability to control movement, physics and targting options</p>
+					<pre><code data-trim>
+						< a-entity camera
+							   look-controls
+							   wasd-controls>
+						< /a-entity>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Component registry</h2>
+					<p>A-Frame has a wealth of user created components available to plugin. The best place to find these are at the A-Frame component registry and awesome A-Frame</p>
+					<a href="https://aframe.io/aframe-registry/">Component registry</a>
+					<br>
+					<a href="https://github.com/aframevr/awesome-aframe">Awesome a-frame</a>
+				</section>
+
+				<section>
+					<h2>Axis</h2>
+					<img src="device-xyz.png" style="width:40%" alt="">
+					<p>A-Frame utilizes 3D space and follows a XYZ axis. The X-axis extends right, Y-axis extends up and the Z-axis extend away from you</p>
+					<pre><code data-trim>
+						<a-box position="3 1 -3"></a-box>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>entity grouping</h2>
+					<p>To simplify the placement of elements a group of entities can be placed inside another. All child enties then inherit any properties of the parent element</p>
+					<pre><code data-trim>
+						<a-entity rotation="10 20 -20">
+							<a-box position="-1 1 3"></a-box>
+							<a-box position="0 1 3"></a-box>
+							<a-box position="1 1 3"></a-box>
+						</a-entity>
+					</code></pre>
+				</section>
+
+				<section>
+					<section>
+						<h2>Inspector</h2>
+						<p>The A-Frame inspector allows us to visually inspect the scene as well as move, rotate and scale present entities</p>
+					</section>
+					<section data-background="https://media.giphy.com/media/iWSKAbdZ6O1Fu/giphy.gif">
+					</section>
+				</section>
+
+				<section>
+					<h2>Assets</h2>
+					<p>Including assets in the a-asset allows the browser to cache any required assets as well as allowing a-frame to fetch all assets before the scene has finished loading</p>
+					<pre><code data-trim>
+						<a-asset>
+							<img src="ball.jpg" id="ball">
+						</a-asset>
+						<!-- ... -->
+							<a-sphere src="#ball"></a-sphere>
+						<!-- ... -->
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Creating components</h2>
+					<p>To create a component at it's most basic level the following is needed</p>
+					<pre><code data-trim>
+							AFRAME.registerComponent('foo', {
+							  schema: {
+							    bar: {type: 'number'},
+							    baz: {type: 'string'}
+							  },
+							  init: function () {
+							    // Do something when component is plugged in.
+							  }
+							});
+						</code></pre>
+				</section>
+
+				<section>
+					<h2>Component to entity</h2>
+					<p>To attach a component to any entity we simply specify any arguments similar to adding width or height</p>
+					<pre><code data-trim>
+						<a-entity foo="bar: 5; baz: qux"></a-entity>
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Overcoming difficulties</h3>
+					<p>Refresh multiple times first</p>
+				</section>
+
+				<section>
+					<h2>Further resources</h2>
+						<a href="aframe.io">A-Frame Home</a>
+						<br>
+						<a href="">A-Frame Docs</a>
+						<br>
+						<a href="">A-Frame extras (examples, guides and components)</a>
+						<br>
+						<a href="">Mozilla getting started guide</a>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
