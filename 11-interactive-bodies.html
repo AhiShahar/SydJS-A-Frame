@@ -5,9 +5,6 @@
     <title>SydJS A-Frame</title>
     <meta name="description" content="SydJS A-Frame">
 
-    <!-- Include stylesheets -->
-    <link rel="stylesheet" href="style.css">
-
     <!--  Include the A-Frame library && A-Frame extra for funs  -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
@@ -18,11 +15,8 @@
   </head>
   <body>
 
-    <div class="scoreBoard">
-      <p>team A - <span class="score">0</span></p>
-    </div>
+    <a-scene physics>
 
-    <a-scene physics soccer-balls>
 
       <!-- Loadings assets -->
       <a-assets>
@@ -43,6 +37,14 @@
       </a-entity> <!-- camera -->
 
 
+      <a-sphere dynamic-body
+                radius="0.2"
+                src="#ball"
+                position="0 1 -4">
+                </a-sphere>
+
+
+
       <!-- X, Y, Z -->
 
           <!-- Right Goal Posts -->
@@ -57,6 +59,8 @@
               <a-cylinder color="white" rotation="90 0 0" position="0 3 2.5" height="5" radius="0.2" static-body></a-cylinder>
           </a-entity>
 
+
+      <!-- INSPECTOR GADGET -->
 
       <!-- INSPECTOR GADGET -->
 
@@ -90,6 +94,5 @@
 
     </a-scene>
 
-    <script src="main.js"></script>
   </body>
 </html>

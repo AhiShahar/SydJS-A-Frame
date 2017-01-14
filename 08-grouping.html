@@ -5,9 +5,6 @@
     <title>SydJS A-Frame</title>
     <meta name="description" content="SydJS A-Frame">
 
-    <!-- Include stylesheets -->
-    <link rel="stylesheet" href="style.css">
-
     <!--  Include the A-Frame library && A-Frame extra for funs  -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
@@ -18,17 +15,7 @@
   </head>
   <body>
 
-    <div class="scoreBoard">
-      <p>team A - <span class="score">0</span></p>
-    </div>
-
-    <a-scene physics soccer-balls>
-
-      <!-- Loadings assets -->
-      <a-assets>
-        <img src="ball.jpg" id="ball">
-        <img src="soccerfield.jpg" id="field">
-      </a-assets>
+    <a-scene physics>
 
       <!-- USER CAMERA -->
       <a-entity camera
@@ -51,34 +38,10 @@
           <a-cylinder color="white" rotation="90 0 0" position="35 4 0" height="5" radius="0.2" static-body></a-cylinder>
 
           <!-- Left Goal Posts -->
-          <a-entity position="-35 1 -2.5">
+          <a-entity position="-10 1 -2.5">
               <a-cylinder color="white" height="6" radius="0.2" static-body></a-cylinder>
               <a-cylinder color="white" position="0 0 5" height="6" radius="0.2" static-body></a-cylinder>
               <a-cylinder color="white" rotation="90 0 0" position="0 3 2.5" height="5" radius="0.2" static-body></a-cylinder>
-          </a-entity>
-
-
-      <!-- INSPECTOR GADGET -->
-
-          <!-- Walls  -->
-          <a-entity scale="35.18 2.14 0.1" position="-0.1 2.24 0" >
-              <a-box depth="2" height="2" width="2" position="0 0 125" static-body color="#3ad12d"></a-box>
-              <a-box depth="2" height="2" width="2" position="0 0 -125" static-body color="#3ad12d"></a-box>
-          </a-entity>
-
-          <!-- Goal 1 Wall Segments -->
-          <a-entity scale="5 2.14 0.43" position="35.3 2.24 -7.61"  rotation="0 -90 0">
-              <a-box depth="2" height="2" width="2" position="0 0 0" static-body color="#3ad12d"></a-box>
-              <a-box depth="2" height="2" width="2" position="3 0 0" static-body color="#3ad12d"></a-box>
-              <a-box depth="1.2" height="0.3" width="2" position="1.1 0.86 0.4" static-body color="#3ad12d"></a-box>
-          </a-entity>
-
-
-          <!-- Goal 2 Wall Segments -->
-          <a-entity scale="5 2.14 0.43" position="-35.3 2.24 -7.61"  rotation="0 -90 0">
-              <a-box depth="2" height="2" width="2" position="0 0 0" static-body color="#3ad12d"></a-box>
-              <a-box depth="2" height="2" width="2" position="3 0 0" static-body color="#3ad12d"></a-box>
-              <a-box depth="1.2" height="0.3" width="2" position="1.1 0.86 0.4" static-body color="#3ad12d"></a-box>
           </a-entity>
 
 
@@ -86,10 +49,9 @@
       <a-sky color="#999999"></a-sky>
 
       <!-- Floor -->
-      <a-box class="floor" width="70" depth="30" opacity="1" static-body position="0 0 0" src="#field"></a-box>
+      <a-box class="floor" width="70" depth="30" opacity="1" static-body position="0 0 0" color="#42AA42"></a-box>
 
     </a-scene>
 
-    <script src="main.js"></script>
   </body>
 </html>
