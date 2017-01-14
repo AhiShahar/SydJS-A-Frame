@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SydJS A-Frame</title>
+    <meta name="description" content="SydJS A-Frame">
+
+    <!--  Include the A-Frame library && A-Frame extra for funs  -->
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
+
+    <!-- Include Physics -->
+    <script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script>
+
+  </head>
+  <body>
+
+    <a-scene physics>
+
+      <!-- USER CAMERA -->
+      <a-entity camera
+                kinematic-body
+                universal-controls="movementEnabled: true"
+                position="0 1.3 0">
+                <!-- Cursor -->
+                <a-entity cursor
+                          position="0 0 -0.01"
+                          scale="0.0002 0.0002 0.0002"
+                          geometry="primitive: ring;"></a-entity>
+      </a-entity> <!-- camera -->
+
+
+      <!-- X, Y, Z -->
+
+          <!-- Right Goal Posts -->
+          <a-cylinder color="white" position="35 1 -2.5" height="6" radius="0.2" static-body></a-cylinder>
+          <a-cylinder color="white" position="35 1 2.5" height="6" radius="0.2" static-body></a-cylinder>
+          <a-cylinder color="white" rotation="90 0 0" position="35 4 0" height="5" radius="0.2" static-body></a-cylinder>
+
+
+      <!-- Sky -->
+      <a-sky color="#999999"></a-sky>
+
+      <!-- Floor -->
+      <a-box class="floor" width="70" depth="30" opacity="1" static-body position="0 0 0" color="#42AA42"></a-box>
+
+    </a-scene>
+
+  </body>
+</html>
