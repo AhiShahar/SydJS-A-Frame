@@ -91,15 +91,18 @@
 				<section>
 					<h3>Entity component system (ECS)</h3>
 					<p>Every object in A-Frame is a component. An entity by itself is an empty object, however where a-frame shines is its ability to plug components into these entities</p>
-					<pre><code data-trim style="position: absolute;left: 251px;bottom: -79px; transform: scale(1.5);">
+					<pre><code data-trim class="fragment fade-out"style="position: absolute;left: 251px;bottom: -79px; transform: scale(1.5);">
 						<a-entity></a-entity>
+					</code></pre>
+					<pre><code data-trim class="fragment fade-in"style="position: absolute;left: 100px;bottom: -79px; transform: scale(1.5);">
+						<a-entity geometry="primitive: sphere"></a-entity>
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>Primitives</h2>
 					<p>Primitives are named enities that come with preset components. A-Frame comes with a wide range of preset primitives to help build your scene</p>
-					<pre><code data-trim>
+					<pre><code data-trim style="transform: scale(1.2);">
 						<a-box width="70" depth="30" color="#409940"></a-box>
 					</code></pre>
 					<a href="https://aframe.io/docs/0.4.0/primitives/">Primitive docs</a>
@@ -175,13 +178,13 @@
 					<h2>Creating components</h2>
 					<p>To create a component at it's most basic level the following is needed</p>
 					<pre><code data-trim>
-							AFRAME.registerComponent('foo', {
+							AFRAME.registerComponent('fuzz', {
 							  schema: {
-							    bar: {type: 'number'},
-							    baz: {type: 'string'}
+							    message: {type: 'string'},
+							    luckyNumber: {type: 'number', default: 7}
 							  },
 							  init: function () {
-							    // Do something when component is plugged in.
+							    console.log(this.data.message, this.data.number);
 							  }
 							});
 						</code></pre>
@@ -190,8 +193,8 @@
 				<section>
 					<h2>Component to entity</h2>
 					<p>To attach a component to any entity we simply specify any arguments similar to adding width or height</p>
-					<pre><code data-trim>
-						<a-entity foo="bar: 5; baz: qux"></a-entity>
+					<pre style="width:100%;"><code data-trim>
+						<a-entity fuzz="message: Hello SydJS; luckyNumber: 42"></a-entity>
 					</code></pre>
 				</section>
 				<!-- CODE 13 RECYCLING -->
@@ -209,6 +212,8 @@
 						<a target="_blank" href="https://github.com/aframevr/awesome-aframe">Awesome A-Frame (examples, guides and components)</a>
 						<br>
 						<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_on_the_web/Building_up_a_basic_demo_with_A-Frame">Mozilla getting started guide</a>
+						<br>
+						<a target="_blank" href="https://developer3.oculus.com/documentation/intro-vr/latest/concepts/bp_intro/">Oculus best practices for VR</a>
 				</section>
 
 				<section>
