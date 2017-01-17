@@ -15,8 +15,7 @@
   </head>
   <body>
 
-    <a-scene physics soccer-balls>
-
+    <a-scene physics>
 
       <!-- Loadings assets -->
       <a-assets>
@@ -35,6 +34,15 @@
                           scale="0.0002 0.0002 0.0002"
                           geometry="primitive: ring;"></a-entity>
       </a-entity> <!-- camera -->
+
+      <a-sphere radius="0.2" src="#ball" position="0 1 -4">
+
+        <!-- ANIMATION -->
+        <a-animation attribute="position" dur="500" from="0 1 -4" to="0 2 -4" easing="ease-out-cubic" repeat="indefinite" direction="alternate"></a-animation>
+        <a-animation attribute="rotation" dur="1000" from="0 0 0" to="0 0 360" repeat="indefinite" ></a-animation>
+
+      </a-sphere>
+
 
 
       <!-- X, Y, Z -->
@@ -83,46 +91,6 @@
       <a-box class="floor" width="70" depth="30" opacity="1" static-body position="0 0 0" src="#field"></a-box>
 
     </a-scene>
-    <script>
 
-    AFRAME.registerComponent('soccer-balls', {
-      schema: {
-        tagName:    { default: 'a-sphere' },
-        premitiveParams: { default: ['dynamic-body', 'src:#ball', 'radius:0.2'] },
-        maxCount:   { default: 1 }, // Maximum balls on the scene
-        interval:   { default: 50 } // how quickly to spawn the first balls
-      },
-
-      // Initialize the component, start tracking the balls
-      init: function () {
-        this.spheres = [];
-        this.timeout = setInterval(this.spawn.bind(this), this.data.interval);
-      },
-
-      // generating a random position around the center of the field, 10 ~meter high
-      randomPosition: function () {
-        return {x: Math.random() * 10 - 5, y: 10, z: Math.random() * 10 - 5};
-      },
-
-      // if the number of balls still haven't reached maxCount, it will generate until it will
-      spawn: function () {
-        // once the set number of balls are in play, stop spawning and start recycling
-        if (this.spheres.length >= this.data.maxCount) {
-          clearTimeout(this.timeout);
-          return;
-        }
-        const data = this.data,
-            sphere = document.createElement(data.tagName);
-        this.spheres.push(sphere);
-        this.el.appendChild(sphere);
-        sphere.setAttribute('position', this.randomPosition());
-        data.premitiveParams.forEach(function (params) {
-          const parts = params.split(':');
-          sphere.setAttribute(parts[0], parts[1] || '', parts[2] || '', parts[3] || '');
-        });
-      }
-    });
-
-    </script>
   </body>
 </html>
