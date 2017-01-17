@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>SydJS A-Frame</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 		<link rel="stylesheet" href="css/reveal.css">
@@ -33,7 +33,7 @@
 				<section>
 					<section>
 					<h2>About us</h2>
-					<p>Two punks from GA trying not to embarrass ourselves ...or Jack</p>
+					<p>Two punks from GA trying not to embarrass ourselves <span class="fragment">...or Jack</span></p>
 					<p>Ned:
 						<a target="_blank" href="https://au.linkedin.com/in/ned-pike-11a075127">
 							<i class="fa fa-linkedin-square" aria-hidden="true"></i>
@@ -173,7 +173,21 @@
 					</code></pre>
 				</section>
 				<!-- CODE 10 ASSETS -->
-				<!-- CODE 11 INTERACTIVE BODIES -->
+				<section>
+					<h2>Animations</h2>
+					<p>Animations are added in A-Frame by attaching an a-animation element as a child of the entity to animate.</p>
+					<pre><code data-trim style="width:130%;left:-124px;position:relative;">
+						<a-box scale="1 1 1">
+							<a-animation attribute="scale"
+							dur="3000"
+							to="2 2 2"
+							repeat="indefinite">
+							</a-animation>
+						</a-box>
+					</code></pre>
+				</section>
+				<!-- CODE 11 ANIMATION -->
+				<!-- CODE 12 INTERACTIVE BODIES -->
 				<section>
 					<h2>Creating components</h2>
 					<p>To create a component at it's most basic level the following is needed</p>
@@ -189,7 +203,7 @@
 							});
 						</code></pre>
 				</section>
-				<!-- CODE 12 BASIC COMPONENT -->
+				<!-- CODE 13 BASIC COMPONENT -->
 				<section>
 					<h2>Component to entity</h2>
 					<p>To attach a component to any entity we simply specify any arguments similar to adding width or height</p>
@@ -197,11 +211,8 @@
 						<a-entity fuzz="message: Hello SydJS; luckyNumber: 42"></a-entity>
 					</code></pre>
 				</section>
-				<!-- CODE 13 RECYCLING -->
-				<!-- CODE 14 FINAL SCENE -->
-				<section>
-					<h2>Overcoming difficulties</h2>
-				</section>
+				<!-- CODE 14 RECYCLING -->
+				<!-- CODE 15 FINAL SCENE -->
 
 				<section>
 					<h2>Further resources</h2>
