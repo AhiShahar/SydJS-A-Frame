@@ -111,7 +111,8 @@
         tagName:    { default: 'a-sphere' },
         premitiveParams: { default: ['dynamic-body', 'src:#ball', 'radius:0.2'] },
         maxCount:   { default: 300 }, // Maximum balls on the scene
-        interval:   { default: 30 } // how quickly to spawn the first balls
+        interval:   { default: 30 }, // how quickly to spawn the first balls
+        locationTest: { default: 1000 } // how often to check if a goal has been scored
       },
 
       // Initialize the component, start tracking the balls
