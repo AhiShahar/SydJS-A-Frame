@@ -5,6 +5,20 @@
     <title>SydJS A-Frame</title>
     <meta name="description" content="SydJS A-Frame">
 
+    <!-- Include stylesheets -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+      .scoreBoard {
+        position: absolute;
+        bottom: 8%;
+        left: 2%;
+        background: rgba(62, 63, 70, 0.42);
+        color: black;
+        z-index: 100;
+        padding: 1px 18px;
+      }
+    </style>
+
     <!--  Include the A-Frame library && A-Frame extra for funs  -->
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.1.0/dist/aframe-extras.min.js"></script>
@@ -14,6 +28,10 @@
 
   </head>
   <body>
+
+    <div class="scoreBoard">
+      <p>goals - <span class="score">0</span></p>
+    </div>
 
     <a-scene physics soccer-balls>
 
@@ -85,12 +103,15 @@
     </a-scene>
     <script>
 
+    let score = 0;
+    const scoreCount = document.querySelector(".score");
+
     AFRAME.registerComponent('soccer-balls', {
       schema: {
         tagName:    { default: 'a-sphere' },
         premitiveParams: { default: ['dynamic-body', 'src:#ball', 'radius:0.2'] },
-        maxCount:   { default: 1 }, // Maximum balls on the scene
-        interval:   { default: 50 } // how quickly to spawn the first balls
+        maxCount:   { default: 300 }, // Maximum balls on the scene
+        interval:   { default: 30 } // how quickly to spawn the first balls
       },
 
       // Initialize the component, start tracking the balls
@@ -120,6 +141,15 @@
           const parts = params.split(':');
           sphere.setAttribute(parts[0], parts[1] || '', parts[2] || '', parts[3] || '');
         });
+
+        // Objects dropping below the height of the field (out of the goals) will be recycled after a few seconds
+        setInterval(function () {
+          if (sphere.body.position.x < 35 & sphere.body.position.x > -35) return;
+          score += 1;
+          scoreCount.innerHTML = score;
+          sphere.body.position.copy(this.randomPosition());
+          sphere.body.velocity.set(0,0,0);
+        }.bind(this), this.data.locationTest);
       }
     });
 
