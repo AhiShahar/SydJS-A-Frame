@@ -138,7 +138,7 @@
         this.spheres.push(sphere);
         this.el.appendChild(sphere);
         sphere.setAttribute('position', this.randomPosition());
-        data.premitiveParams.forEach(function (params) {
+        data.primitiveParams.forEach(function (params) {
           const parts = params.split(':');
           sphere.setAttribute(parts[0], parts[1] || '', parts[2] || '', parts[3] || '');
         });
