@@ -109,7 +109,7 @@
     AFRAME.registerComponent('soccer-balls', {
       schema: {
         tagName:    { default: 'a-sphere' },
-        premitiveParams: { default: ['dynamic-body', 'src:#ball', 'radius:0.2'] },
+        primitiveParams: { default: ['dynamic-body', 'src:#ball', 'radius:0.2'] },
         maxCount:   { default: 300 }, // Maximum balls on the scene
         interval:   { default: 30 }, // how quickly to spawn the first balls
         locationTest: { default: 1000 } // how often to check if a goal has been scored
@@ -138,7 +138,7 @@
         this.spheres.push(sphere);
         this.el.appendChild(sphere);
         sphere.setAttribute('position', this.randomPosition());
-        data.premitiveParams.forEach(function (params) {
+        data.primitiveParams.forEach(function (params) {
           const parts = params.split(':');
           sphere.setAttribute(parts[0], parts[1] || '', parts[2] || '', parts[3] || '');
         });
