@@ -18,9 +18,9 @@ nav {
 }
 
 a {
+  font-size: 13px;
   color: white;
   text-decoration: none;
-  padding: 0 1.5%;
 }
 
 a:hover {
