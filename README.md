@@ -2,7 +2,7 @@
 
 Below are all the links the the different scenes went through in our talk
 
-__[Slides](https://ahishahar.github.io/SydJS-A-Frame/SydJS-slides/index.html/)__
+__[Slides](https://ahishahar.github.io/SydJS-A-Frame/SydJS-slides/index.html#/)__
 
 __[a-scene scene](https://ahishahar.github.io/SydJS-A-Frame/01-scene.html)__
 
